@@ -1,0 +1,6 @@
+Orbot is an app for blogging
+
+- It is a multi page site.
+- Data is uploades by only service provider.
+- There is no user uploaded data.
+- It will be a casual app which is not a progressive web app as well as a single page app.
