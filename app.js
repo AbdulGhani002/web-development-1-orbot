@@ -1,17 +1,17 @@
-const http = require("http");
+const express = require("express");
 
-function handleRequest(request, response) {
-  if (request.url === "/") {
-    response.statusCode = 200;
-    response.end(`<h1>Hello World</h1>`);
-  } else if (request.url === "/currenttime") {
-    response.statusCode = 200;
-    response.end(
-      `<h1>Hello , Current time is ${new Date().toISOString()}</h1>`
-    );
-  }
-}
+const app = express();
 
-const server = http.createServer(handleRequest);
+const port = 3000;
 
-server.listen(3000);
+const host = "127.0.0.1";
+
+app.use("/currenttime", function (req, res) {
+  res.send(`<h1>Hello, Current time is ${new Date().toISOString()}</h1>`);
+});
+
+app.use("/", function (req, res) {
+  res.send(`<h1>Hello World</h1>`);
+});
+
+app.listen(port, console.log(`Running server on https://${host}:${port}`));
