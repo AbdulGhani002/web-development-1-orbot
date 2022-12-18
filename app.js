@@ -41,7 +41,15 @@ app.post("/store-user", function (req, res) {
 
   fs.writeFileSync(filePath, JSON.stringify(existingUsers));
 
-  res.send("<h1>Username stored!</h1>");
+  let responseData = "<ul>";
+
+  for (const user of existingUsers) {
+    responseData += `<li>${user}</li>`;
+  }
+
+  responseData += "</ul>";
+
+  res.send(responseData);
 });
 
 app.listen(port, console.log(`Running server on https://${host}:${port}`));
